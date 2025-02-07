@@ -18,3 +18,4 @@ A simple hotel booking management system built with **Node.js**, **Express**, an
 1. Clone the repository:
    git clone https://github.com/deshwal28/Hotel-Booking-System.git
 cd Hotel-Booking-System
+The server will run on http://localhost:5000.
