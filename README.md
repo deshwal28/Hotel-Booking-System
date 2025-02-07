@@ -16,4 +16,5 @@ A simple hotel booking management system built with **Node.js**, **Express**, an
 
 ## 📦 Installation & Setup
 1. Clone the repository:
-   https://github.com/deshwal28/Hotel-Booking-System/tree/main
+   git clone https://github.com/deshwal28/Hotel-Booking-System.git
+cd Hotel-Booking-System
