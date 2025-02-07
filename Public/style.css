@@ -1,0 +1,75 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #4CAF50;
+    margin-top: 20px;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    margin: 10px 0;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #availableRooms {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #availableRooms li {
+    margin: 5px;
+    font-size: 1.2em;
+  }
+  
+  #messageBox {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.1em;
+    border-radius: 4px;
+  }
+  
+  #messageBox.success {
+    color: green;
+    border: 2px solid green;
+  }
+  
+  #messageBox.error {
+    color: red;
+    border: 2px solid red;
+  }
+  
