@@ -3,36 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Room Reservation</title>
-  <link rel="stylesheet" href="style.css">  <!-- Link to the CSS file -->
+  <title>Register - Hotel Booking System</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic styles for header and registration form */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+      background-color: #218838;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .container h2 {
+      text-align: center;
+    }
+    .container form input {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .container form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .container form button:hover {
+      background-color: #45a049;
+    }
+    #registerMessage {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Hotel Booking System</h1>
+    <a href="login.html">Login</a>
+  </header>
 
-  <h1>Hotel Room Reservation System</h1>
+  <div class="container">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit">Register</button>
+    </form>
+    <div id="registerMessage"></div>
+  </div>
 
-  <button id="logoutBtn">Logout</button> <!-- Added Logout Button -->
-
-  <h3>Available Rooms</h3>
-  <ul id="availableRooms"></ul> <!-- List for available rooms -->
-
-  <h3>Book Rooms</h3>
-  <form id="bookingForm">
-    <label for="customerName">Your Name:</label>
-    <input type="text" id="customerName" required /><br><br>
-
-    <label for="roomNumbers">Room Numbers (comma-separated):</label>
-    <input type="text" id="roomNumbers" required /><br><br>
-
-    <label for="bookingDate">Booking Date:</label>
-    <input type="date" id="bookingDate" required /><br><br>
-
-    <button type="submit">Book Rooms</button>
-  </form>
-
-  <div id="messageBox"></div> <!-- Box to display success or error messages -->
-
-  <script src="script.js"></script>  <!-- Link to the JavaScript file -->
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        document.getElementById('registerMessage').innerText = "Passwords do not match!";
+        return;
+      }
+      
+      try {
+        const response = await fetch('https://hotel-booking-system-esqh.onrender.com/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+        
+        const data = await response.json();
+        document.getElementById('registerMessage').innerText = data.message || data.error || "Registration successful!";
+        
+        // Optionally, redirect to login page upon successful registration:
+        // if (response.ok) window.location.href = 'login.html';
+      } catch (err) {
+        console.error("Registration Error:", err);
+        document.getElementById('registerMessage').innerText = "An error occurred during registration.";
+      }
+    });
+  </script>
 </body>
 </html>
 
-
+   
